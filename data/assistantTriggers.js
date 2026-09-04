@@ -1,0 +1,41 @@
+window.ASSISTANT_TRIGGERS={
+basics:[{selector:'#start-experiment',event:'click',dialogue:'run'}],
+logistic:[{selector:'#r',event:'input',dialogue:'periodic',test:el=>Number(el.value)>=3&&Number(el.value)<3.55},{selector:'#r',event:'input',dialogue:'chaos',test:el=>Number(el.value)>=3.57}],
+lorenz:[{selector:'#lorenz-run',event:'click',dialogue:'run'},{selector:'#compare-mode',event:'change',dialogue:'compare',test:el=>el.checked}],
+fractal:[
+  {
+    selector:'#iterations',
+    event:'change',
+    dialogue:'iterations'
+  }
+],
+applications:[
+  {
+    selector:'.content-row',
+    event:'click',
+    dialogue:'examples'
+  }
+],
+quiz:[
+  {
+    selector:'.content-card',
+    event:'click',
+    dialogue:'progress'
+  }
+],
+glossary:[
+  {
+    selector:'#term-search',
+    event:'input',
+    dialogue:'search',
+    test:el=>el.value.trim().length>=2
+  }
+],
+formulas:[
+  {
+    selector:'.formula-card',
+    event:'click',
+    dialogue:'symbols'
+  }
+]
+};

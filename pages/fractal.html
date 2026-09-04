@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Интерактивная лаборатория множества Мандельброта">
+  <title>Фракталы: множество Мандельброта</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/fractal.css">
+  <link rel="stylesheet" href="../css/conclusion.css">
+</head>
+
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">λ</span>
+    <span>Лаборатория хаоса</span>
+  </a>
+
+  <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+    Меню
+  </button>
+
+  <nav class="nav">
+    <a href="basics.html">Основы</a>
+    <a href="logistic.html">Логистика</a>
+    <a href="lorenz.html">Лоренц</a>
+    <a class="active" href="fractal.html">Фракталы</a>
+    <a href="applications.html">Применения</a>
+    <a href="experiments.html">Эксперименты</a>
+    <a href="quiz.html">Испытание</a>
+    <a href="glossary.html">Глоссарий</a>
+    <a href="formulas.html">Формулы</a>
+  </nav>
+</header>
+
+<main class="page-main fractal-page">
+
+  <section class="page-hero">
+    <p class="eyebrow">04 · Фракталы</p>
+    <h1>Фракталы: порядок внутри бесконечной сложности</h1>
+    <p>
+      Исследуйте множество Мандельброта и наблюдайте,
+      как простое правило создаёт структуры,
+      повторяющиеся на разных масштабах.
+    </p>
+  </section>
+
+  <section class="fractal-lab">
+
+    <div class="fractal-stage">
+      <div class="stage-head">
+        <div>
+          <p class="eyebrow">Комплексная плоскость</p>
+          <h2>Множество Мандельброта</h2>
+        </div>
+
+        <span class="zoom-indicator">
+          Масштаб: <strong id="zoom-value">×1</strong>
+        </span>
+      </div>
+
+      <canvas
+        id="mandelbrot-canvas"
+        aria-label="Интерактивная визуализация множества Мандельброта">
+      </canvas>
+
+      <div class="drag-hint">
+        Колесо мыши — масштаб · Перетаскивание — перемещение
+      </div>
+    </div>
+
+    <aside class="fractal-controls">
+      <p class="eyebrow">Параметры исследования</p>
+      <h2>Исследование фрактала</h2>
+
+      <a
+        class="formula-link"
+        href="formulas.html#mandelbrot"
+        aria-label="Подробнее о формуле множества Мандельброта">
+        <div class="formula fractal-formula">
+          z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c
+        </div>
+      </a>
+
+      <p class="fractal-explanation">
+        Для каждой точки комплексной плоскости выбирается число <em>c</em>.
+        Затем формула применяется снова и снова.
+        Если последовательность остаётся ограниченной,
+        точка относится к множеству Мандельброта.
+      </p>
+
+      <div class="fractal-values">
+        <div>
+          <span>Re(c)</span>
+          <strong id="center-x">−0.5</strong>
+        </div>
+        <div>
+          <span>Im(c)</span>
+          <strong id="center-y">0</strong>
+        </div>
+      </div>
+
+      <label class="iteration-control">
+        <span>Количество итераций</span>
+        <input id="iterations" type="range" min="50" max="500" step="10" value="150">
+        <strong id="iterations-value">150</strong>
+      </label>
+
+      <p class="control-note">
+        Чем больше число итераций, тем точнее видна граница,
+        но тем больше вычислений требуется.
+      </p>
+
+      <div class="fractal-actions">
+        <button class="button primary" id="fractal-render">
+          Исследовать
+        </button>
+
+        <button class="button secondary" id="fractal-reset">
+          Исходный масштаб
+        </button>
+      </div>
+
+      <div class="preset-block">
+        <span class="control-caption">Интересные области</span>
+
+        <button class="preset-button" data-preset="main">
+          Главная форма
+        </button>
+
+        <button class="preset-button" data-preset="seahorse">
+          Долина морских коньков
+        </button>
+
+        <button class="preset-button" data-preset="spiral">
+          Спираль
+        </button>
+
+        <button class="preset-button" data-preset="mini">
+          Мини-Мандельброт
+        </button>
+      </div>
+    </aside>
+
+  </section>
+
+  <section class="content-row fractal-cards">
+
+    <article class="content-card">
+      <span class="card-number">01</span>
+      <h3>Наблюдайте</h3>
+      <p>
+        При увеличении границы множества появляются всё новые детали:
+        ветви, спирали и уменьшенные структуры,
+        похожие на исходную фигуру.
+      </p>
+      <p class="card-prompt">
+        Попробуйте приблизить один участок несколько раз.
+      </p>
+    </article>
+
+    <article class="content-card">
+      <span class="card-number">02</span>
+      <h3>Что происходит?</h3>
+      <p>
+        Каждая точка комплексной плоскости проверяется
+        с помощью одной и той же итерационной формулы.
+        Одни последовательности остаются ограниченными,
+        а другие начинают быстро расти.
+      </p>
+      <p class="card-prompt">
+        Сложная форма возникает из повторения простого правила.
+      </p>
+    </article>
+
+    <article class="content-card">
+      <span class="card-number">03</span>
+      <h3>Почему это важно?</h3>
+      <p>
+        Фракталы показывают, что сложность не обязательно требует
+        сложных правил. Простая математическая процедура может создавать
+        чрезвычайно богатую геометрическую структуру.
+      </p>
+      <p class="card-prompt">
+        Структура раскрывается по мере изменения масштаба.
+      </p>
+    </article>
+
+  </section>
+
+  <section class="self-similarity-section">
+    <div>
+      <p class="eyebrow">Самоподобие</p>
+      <h2>Похожие формы на разных масштабах</h2>
+      <p>
+        Во многих фракталах части структуры напоминают более крупные фрагменты.
+        Такое свойство называют
+        <a class="term-link" href="glossary.html#self-similarity">самоподобием</a>.
+      </p>
+
+      <p>
+        Множество Мандельброта не является строго самоподобным во всех точках,
+        однако при увеличении его границы часто возникают похожие
+        и повторяющиеся структуры.
+      </p>
+    </div>
+
+    <div class="scale-demo">
+  <div class="scale-card">
+    <canvas id="fractal-preview-1"></canvas>
+    <span>×1</span>
+  </div>
+
+  <div class="scale-card">
+    <canvas id="fractal-preview-50"></canvas>
+    <span>×50</span>
+  </div>
+
+  <div class="scale-card">
+    <canvas id="fractal-preview-2500"></canvas>
+    <span>×2500</span>
+  </div>
+</div>
+  </section>
+
+  <section class="chaos-link-section">
+    <p class="eyebrow">Связь с теорией хаоса</p>
+    <h2>Как фракталы связаны с хаосом?</h2>
+
+    <p>
+      Теория хаоса изучает сложное поведение динамических систем,
+      возникающее из простых детерминированных правил.
+      Фрактальная геометрия часто появляется при исследовании границ
+      между различными режимами поведения таких систем.
+    </p>
+
+    <div class="comparison-grid">
+      <article>
+        <span>Хаос во времени</span>
+        <strong>Сложность в движении</strong>
+        <p>
+          Траектория системы меняется сложным образом во времени.
+        </p>
+      </article>
+
+      <article>
+        <span>Фрактальная структура</span>
+        <strong>Сложность в геометрии</strong>
+        <p>
+          Структура становится всё богаче при изменении масштаба.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="try-it fractal-task">
+
+    <div>
+      <p class="mini-task-label">Мини-задание</p>
+      <h2>Попробуйте сами</h2>
+      <p>
+        Исследуйте границу множества и сравните структуры
+        на разных масштабах.
+      </p>
+    </div>
+
+    <div class="task-steps">
+      <span>1</span>
+      <p>Увеличьте область границы не менее чем в 100 раз.</p>
+
+      <span>2</span>
+      <p>Найдите спиральную или ветвящуюся структуру.</p>
+
+      <span>3</span>
+      <p>Выберите другой участок и сравните формы.</p>
+    </div>
+
+    <div class="task-question conclusion-question">
+      <div>
+        <span>Вопрос для вывода</span>
+        <strong>
+          Почему при увеличении границы множества появляются новые детали,
+          а изображение не просто становится крупнее?
+        </strong>
+      </div>
+
+      <button
+        class="button secondary conclusion-toggle"
+        type="button"
+        aria-expanded="false">
+        Показать ответ
+      </button>
+
+      <div class="conclusion-answer" hidden>
+        <span>Ответ и пояснение</span>
+        <p>
+          Потому что граница множества Мандельброта имеет чрезвычайно сложную
+          фрактальную структуру. При увеличении мы открываем детали,
+          которые раньше были слишком малы, чтобы их увидеть.
+          Итерационная формула остаётся той же,
+          но её применение создаёт структуру на всё меньших масштабах.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="../js/common.js"></script>
+<script src="../js/mandelbrot.js"></script>
+<script src="../js/conclusion.js"></script>
+<script src="../js/term-links.js"></script>
+
+</body>
+</html>

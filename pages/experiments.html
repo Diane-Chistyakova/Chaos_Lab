@@ -1,0 +1,1731 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1">
+
+  <meta
+    name="description"
+    content="Исследовательский практикум цифровой лаборатории хаоса">
+
+  <title>Эксперименты — Лаборатория хаоса</title>
+
+  <link
+    rel="stylesheet"
+    href="../css/style.css">
+
+  <link
+    rel="stylesheet"
+    href="../css/experiments.css">
+
+  <link
+    rel="stylesheet"
+    href="../css/conclusion.css">
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <a
+    class="brand"
+    href="../index.html">
+
+    <span class="brand-mark">λ</span>
+
+    <span>
+      Лаборатория хаоса
+    </span>
+
+  </a>
+
+
+  <button
+    class="menu-toggle"
+    aria-label="Открыть меню"
+    aria-expanded="false">
+
+    Меню
+
+  </button>
+
+
+  <nav
+    class="nav"
+    aria-label="Основная навигация">
+
+    <a href="basics.html">
+      Основы
+    </a>
+
+    <a href="logistic.html">
+      Логистика
+    </a>
+
+    <a href="lorenz.html">
+      Лоренц
+    </a>
+
+    <a href="fractal.html">
+      Фракталы
+    </a>
+
+    <a href="applications.html">
+      Применения
+    </a>
+
+    <a
+      class="active"
+      href="experiments.html">
+
+      Эксперименты
+
+    </a>
+
+    <a href="quiz.html">
+      Испытание
+    </a>
+
+    <a href="glossary.html">
+      Глоссарий
+    </a>
+
+    <a href="formulas.html">
+      Формулы
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main class="page-main experiments-page">
+
+
+  <!-- =========================================
+       ВВЕДЕНИЕ
+  ========================================== -->
+
+  <section class="page-hero">
+
+    <p class="eyebrow">
+      06 · Исследовательский практикум
+    </p>
+
+
+    <h1>
+      Не просто наблюдайте.<br>
+      Найдите закономерность сами.
+    </h1>
+
+
+    <p>
+      В предыдущих лабораториях вы познакомились
+      с основными моделями теории хаоса.
+      Теперь используйте их как исследователь:
+      измеряйте, сравнивайте и ищите скрытый порядок.
+    </p>
+
+  </section>
+
+
+
+  <!-- =========================================
+       ВЫБОР ЭКСПЕРИМЕНТА
+  ========================================== -->
+
+  <section class="experiment-selector">
+
+
+    <div class="selector-head">
+
+      <div>
+
+        <p class="eyebrow">
+          Выберите исследование
+        </p>
+
+        <h2>
+          Три эксперимента
+        </h2>
+
+      </div>
+
+
+      <p>
+        Каждый опыт показывает отдельное свойство
+        хаотических систем и заканчивается
+        собственным исследовательским выводом.
+      </p>
+
+    </div>
+
+
+
+    <div
+      class="experiment-tabs"
+      role="tablist"
+      aria-label="Выбор эксперимента">
+
+
+      <!-- 01 -->
+
+      <button
+        class="experiment-tab active"
+        type="button"
+        data-experiment="feigenbaum"
+        aria-selected="true">
+
+        <span class="tab-number">
+          01
+        </span>
+
+
+        <span>
+
+          <strong>
+            Измерьте хаос
+          </strong>
+
+          <small>
+            Число Фейгенбаума
+          </small>
+
+        </span>
+
+      </button>
+
+
+
+      <!-- 02 -->
+
+      <button
+        class="experiment-tab"
+        type="button"
+        data-experiment="lorenz-map"
+        aria-selected="false">
+
+        <span class="tab-number">
+          02
+        </span>
+
+
+        <span>
+
+          <strong>
+            Карта режимов
+          </strong>
+
+          <small>
+            Система Лоренца
+          </small>
+
+        </span>
+
+      </button>
+
+
+
+      <!-- 03 -->
+
+      <button
+        class="experiment-tab"
+        type="button"
+        data-experiment="window"
+        aria-selected="false">
+
+        <span class="tab-number">
+          03
+        </span>
+
+
+        <span>
+
+          <strong>
+            Остров порядка
+          </strong>
+
+          <small>
+            Периодическое окно
+          </small>
+
+        </span>
+
+      </button>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================================
+       ЭКСПЕРИМЕНТ 01
+       ЧИСЛО ФЕЙГЕНБАУМА
+  ======================================================= -->
+
+  <section
+    class="experiment-panel active"
+    id="experiment-feigenbaum"
+    data-panel="feigenbaum">
+
+
+    <div class="experiment-heading">
+
+
+      <div>
+
+        <p class="eyebrow">
+          Эксперимент 01 · Измерение
+        </p>
+
+
+        <h2>
+          Можно ли измерить путь к хаосу?
+        </h2>
+
+
+        <p>
+          При удвоении периода точки бифуркаций
+          располагаются всё ближе друг к другу.
+          Отношения расстояний между ними стремятся
+          к одной универсальной величине.
+        </p>
+
+      </div>
+
+
+      <div class="experiment-goal">
+
+        <span>
+          Цель
+        </span>
+
+        <strong>
+          Получить число, близкое к 4,669
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="experiment-layout">
+
+
+      <!-- ГРАФИК -->
+
+      <div class="experiment-stage">
+
+
+        <div class="stage-head">
+
+          <div>
+
+            <p class="eyebrow">
+              Бифуркационная диаграмма
+            </p>
+
+            <h3>
+              Каскад удвоения периода
+            </h3>
+
+          </div>
+
+
+          <span class="stage-note" id="feigenbaum-range-label">
+  Общий вид · r = 2.50–4.00
+</span>
+
+        </div>
+
+
+
+        <div class="canvas-shell">
+
+          <canvas
+            id="feigenbaum-chart"
+            aria-label="Бифуркационная диаграмма для исследования числа Фейгенбаума">
+          </canvas>
+
+        </div>
+		<div class="feigenbaum-zoom-controls">
+
+  <button
+    class="button secondary"
+    id="feigenbaum-full-view"
+    type="button">
+    Общий вид
+  </button>
+
+  <button
+    class="button primary"
+    id="feigenbaum-zoom-next"
+    type="button">
+    Увеличить следующий участок
+  </button>
+
+</div>
+
+
+
+        <div class="stage-footer">
+
+          <span>
+            Нажимайте на диаграмму рядом с моментами,
+            где одна ветвь разделяется на две.
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- УПРАВЛЕНИЕ -->
+
+      <aside class="experiment-controls">
+
+
+        <p class="eyebrow">
+          Ваши измерения
+        </p>
+
+
+        <h2>
+          Отметьте четыре бифуркации
+        </h2>
+
+
+        <p class="experiment-description">
+          Найдите последовательные точки перехода:
+          период 1 → 2, затем 2 → 4,
+          4 → 8 и 8 → 16.
+        </p>
+
+
+
+        <div class="measurement-list">
+
+
+          <div class="measurement-row">
+
+            <span>
+              r₁
+            </span>
+
+            <strong id="feigenbaum-r1">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="measurement-row">
+
+            <span>
+              r₂
+            </span>
+
+            <strong id="feigenbaum-r2">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="measurement-row">
+
+            <span>
+              r₃
+            </span>
+
+            <strong id="feigenbaum-r3">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="measurement-row">
+
+            <span>
+              r₄
+            </span>
+
+            <strong id="feigenbaum-r4">
+              —
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="experiment-actions">
+
+
+          <button
+            class="button secondary"
+            id="feigenbaum-undo"
+            type="button">
+
+            Отменить точку
+
+          </button>
+
+
+          <button
+            class="button secondary"
+            id="feigenbaum-reset"
+            type="button">
+
+            Начать заново
+
+          </button>
+
+
+        </div>
+
+
+
+        <div class="experiment-result feigenbaum-result">
+
+
+          <span>
+            Ваш результат
+          </span>
+
+
+          <strong id="feigenbaum-value">
+            —
+          </strong>
+
+
+          <p id="feigenbaum-description">
+
+            Отметьте четыре точки,
+            чтобы выполнить расчёт.
+
+          </p>
+
+
+        </div>
+
+
+
+        <div class="reference-result">
+
+          <span>
+            Теоретическое значение
+          </span>
+
+          <strong>
+            δ ≈ 4,669201609…
+          </strong>
+
+        </div>
+
+
+      </aside>
+
+
+    </div>
+
+
+
+    <section class="experiment-question conclusion-question">
+
+
+      <div>
+
+        <span>
+          Вопрос для вывода
+        </span>
+
+
+        <strong>
+          Почему появление почти одного и того же отношения
+          между бифуркациями говорит о существовании
+          порядка на пути к хаосу?
+        </strong>
+
+      </div>
+
+
+      <button
+        class="button secondary conclusion-toggle"
+        type="button"
+        aria-expanded="false">
+
+        Показать ответ
+
+      </button>
+
+
+      <div
+        class="conclusion-answer"
+        hidden>
+
+        <span>
+          Ответ и пояснение
+        </span>
+
+
+        <p>
+          Потому что последовательность удвоений периода
+          происходит не произвольно. Расстояния между
+          бифуркациями уменьшаются по закономерному правилу,
+          а их отношения стремятся к универсальной
+          константе Фейгенбаума.
+        </p>
+
+      </div>
+
+
+    </section>
+
+
+  </section>
+
+
+
+  <!-- ======================================================
+       ЭКСПЕРИМЕНТ 02
+       КАРТА РЕЖИМОВ ЛОРЕНЦА
+  ======================================================= -->
+
+  <section
+    class="experiment-panel"
+    id="experiment-lorenz-map"
+    data-panel="lorenz-map"
+    hidden>
+
+
+    <div class="experiment-heading">
+
+
+      <div>
+
+        <p class="eyebrow">
+          Эксперимент 02 · Исследование параметра
+        </p>
+
+
+        <h2>
+          Как один параметр меняет всю систему?
+        </h2>
+
+
+        <p>
+          Оставьте σ и β постоянными
+          и исследуйте влияние параметра ρ
+          на поведение системы Лоренца.
+        </p>
+
+      </div>
+
+
+      <div class="experiment-goal">
+
+        <span>
+          Цель
+        </span>
+
+        <strong>
+          Построить карту различных режимов
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="experiment-layout lorenz-map-layout">
+
+
+      <!-- КАРТА -->
+
+      <div class="experiment-stage">
+
+
+        <div class="stage-head">
+
+          <div>
+
+            <p class="eyebrow">
+              Исследование диапазона
+            </p>
+
+            <h3>
+              Карта поведения по параметру ρ
+            </h3>
+
+          </div>
+
+
+          <span class="stage-note">
+            σ = 10 · β = 8/3
+          </span>
+
+        </div>
+
+
+
+        <div class="canvas-shell lorenz-map-shell">
+
+          <canvas
+            id="lorenz-map-chart"
+            aria-label="Карта режимов системы Лоренца при изменении параметра ро">
+          </canvas>
+
+        </div>
+
+
+
+        <div class="map-legend">
+
+
+          <span>
+            <i class="mode-stable"></i>
+            более устойчивое
+          </span>
+
+
+          <span>
+            <i class="mode-transition"></i>
+            переходное
+          </span>
+
+
+          <span>
+            <i class="mode-chaos"></i>
+            сложное поведение
+          </span>
+
+
+        </div>
+		
+		<section
+  class="lorenz-comparison"
+  id="lorenz-comparison"
+  hidden>
+
+  <div class="lorenz-comparison-head">
+
+    <div>
+
+      <p class="eyebrow">
+        Этап 2 · Сравнение состояний
+      </p>
+
+      <h3>
+        Что изменилось при изменении ρ?
+      </h3>
+
+      <p>
+        Сравните два состояния одной и той же системы Лоренца.
+        Уравнения и параметры σ, β остаются прежними —
+        меняется только ρ.
+      </p>
+
+    </div>
+
+    <button
+      class="button secondary"
+      id="lorenz-comparison-reset"
+      type="button">
+      Сбросить сравнение
+    </button>
+
+  </div>
+
+
+  <div class="lorenz-comparison-grid">
+
+    <article class="lorenz-state-card">
+
+      <span class="comparison-label">
+        Состояние A
+      </span>
+
+      <strong id="lorenz-a-rho">
+        —
+      </strong>
+
+      <div class="comparison-data">
+        <span>Режим <b id="lorenz-a-mode">—</b></span>
+        <span>Чувствительность <b id="lorenz-a-sensitivity">—</b></span>
+        <span>Рост расхождения <b id="lorenz-a-growth">—</b></span>
+      </div>
+
+    </article>
+
+
+    <div class="lorenz-comparison-arrow">
+      →
+    </div>
+
+
+    <article class="lorenz-state-card">
+
+      <span class="comparison-label">
+        Состояние B
+      </span>
+
+      <strong id="lorenz-b-rho">
+        —
+      </strong>
+
+      <div class="comparison-data">
+        <span>Режим <b id="lorenz-b-mode">—</b></span>
+        <span>Чувствительность <b id="lorenz-b-sensitivity">—</b></span>
+        <span>Рост расхождения <b id="lorenz-b-growth">—</b></span>
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div
+    class="lorenz-comparison-conclusion"
+    id="lorenz-comparison-conclusion">
+
+    Сохраните два исследованных состояния,
+    чтобы получить сравнительный вывод.
+
+  </div>
+
+</section>
+
+
+      </div>
+
+
+
+      <!-- УПРАВЛЕНИЕ -->
+
+      <aside class="experiment-controls">
+
+
+        <p class="eyebrow">
+          Выберите состояние
+        </p>
+
+
+        <h2>
+          Параметр ρ
+        </h2>
+
+
+        <p class="experiment-description">
+          Перемещайте ползунок по карте.
+          Для выбранного значения справа
+          будет рассчитана отдельная траектория.
+        </p>
+
+
+
+        <label class="range-control">
+
+
+          <div class="control-row">
+
+            <span>
+              ρ
+            </span>
+
+            <strong id="lorenz-rho-value">
+              28.0
+            </strong>
+
+          </div>
+
+
+          <input
+            id="lorenz-rho"
+            type="range"
+            min="0"
+            max="50"
+            step="0.1"
+            value="28">
+
+
+          <div class="range-labels">
+
+            <span>
+              0
+            </span>
+
+            <span>
+              50
+            </span>
+
+          </div>
+
+
+        </label>
+
+
+
+        <button
+          class="button primary full-button"
+          id="lorenz-analyse"
+          type="button">
+
+          Исследовать состояние
+
+        </button>
+
+
+
+        <div class="mini-attractor-card">
+
+
+          <span>
+            Траектория для выбранного ρ
+          </span>
+
+
+          <canvas
+            id="lorenz-preview"
+            aria-label="Проекция траектории системы Лоренца">
+          </canvas>
+
+
+        </div>
+
+
+<div class="diagnostic-grid lorenz-diagnostics">
+
+  <article>
+
+    <span>
+      Рост расхождения
+    </span>
+
+    <strong id="lorenz-divergence">
+      —
+    </strong>
+
+  </article>
+
+
+  <article>
+
+    <span>
+      Чувствительность
+    </span>
+
+    <strong id="lorenz-sensitivity">
+      —
+    </strong>
+
+  </article>
+
+</div>
+        <div class="experiment-result">
+
+
+          <span>
+            Наблюдаемое поведение
+          </span>
+
+
+          <strong id="lorenz-mode">
+            —
+          </strong>
+
+
+          <p id="lorenz-mode-description">
+            Выберите значение ρ
+            и запустите исследование.
+          </p>
+
+
+        </div>
+		
+		<div class="lorenz-save-actions">
+
+  <button
+    class="button secondary"
+    id="lorenz-save-a"
+    type="button">
+    Запомнить как A
+  </button>
+
+  <button
+    class="button secondary"
+    id="lorenz-save-b"
+    type="button">
+    Запомнить как B
+  </button>
+
+</div>
+
+<p
+  class="lorenz-save-note"
+  id="lorenz-save-note">
+  Сначала исследуйте состояние, затем сохраните его для сравнения.
+</p>
+
+
+      </aside>
+
+
+    </div>
+
+
+
+    <section class="experiment-question conclusion-question">
+
+
+      <div>
+
+        <span>
+          Вопрос для вывода
+        </span>
+
+
+        <strong>
+          Если сами уравнения Лоренца остаются теми же,
+          почему изменение только одного параметра
+          способно полностью изменить вид движения?
+        </strong>
+
+      </div>
+
+
+      <button
+        class="button secondary conclusion-toggle"
+        type="button"
+        aria-expanded="false">
+
+        Показать ответ
+
+      </button>
+
+
+      <div
+        class="conclusion-answer"
+        hidden>
+
+        <span>
+          Ответ и пояснение
+        </span>
+
+
+        <p>
+          Параметр является частью математического закона
+          системы и определяет взаимодействие её переменных.
+          В нелинейной системе изменение параметра может
+          менять устойчивость состояний и приводить
+          к качественно новым режимам движения.
+        </p>
+
+      </div>
+
+
+    </section>
+
+
+  </section>
+
+
+
+  <!-- ======================================================
+       ЭКСПЕРИМЕНТ 03
+       ОСТРОВ ПОРЯДКА
+  ======================================================= -->
+
+  <section
+    class="experiment-panel"
+    id="experiment-window"
+    data-panel="window"
+    hidden>
+
+
+    <div class="experiment-heading">
+
+
+      <div>
+
+        <p class="eyebrow">
+          Эксперимент 03 · Поиск
+        </p>
+
+
+        <h2>
+          Найдите порядок внутри хаоса
+        </h2>
+
+
+        <p>
+          Исследуйте хаотическую область
+          логистического отображения и попробуйте
+          самостоятельно обнаружить участок,
+          где регулярное движение появляется снова.
+        </p>
+
+      </div>
+
+
+      <div class="experiment-goal">
+
+        <span>
+          Цель
+        </span>
+
+        <strong>
+          Найти периодическое окно
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="experiment-layout window-layout">
+
+
+      <!-- ДИАГРАММА -->
+
+      <div class="experiment-stage">
+
+
+        <div class="stage-head">
+
+          <div>
+
+            <p class="eyebrow">
+              Хаотическая область
+            </p>
+
+            <h3>
+              Найдите остров регулярности
+            </h3>
+
+          </div>
+
+
+          <span
+            class="search-status"
+            id="window-search-status">
+
+            Остров ещё не найден
+
+          </span>
+
+        </div>
+
+
+
+        <div class="canvas-shell window-shell">
+
+          <canvas
+            id="window-bifurcation"
+            aria-label="Увеличенная бифуркационная диаграмма хаотической области">
+          </canvas>
+
+        </div>
+
+
+
+        <div class="stage-footer">
+
+          <span>
+            Диапазон исследования:
+            3.57 ≤ r ≤ 4.00
+          </span>
+
+        </div>
+		
+		<section
+  class="window-boundary-study"
+  id="window-boundary-study"
+  hidden>
+
+
+  <div class="boundary-study-head">
+
+    <div>
+
+      <p class="eyebrow">
+        Этап 2 · Исследование найденного окна
+      </p>
+
+      <h3>
+        Где начинается и заканчивается остров порядка?
+      </h3>
+
+      <p>
+        Мы увеличили область вокруг найденного периодического режима.
+        Исследуйте соседние значения r и попробуйте определить
+        границы, внутри которых сохраняется периодическое движение.
+      </p>
+
+    </div>
+
+
+    <div class="boundary-window-info">
+
+      <span>
+        Найденный центр
+      </span>
+
+      <strong id="boundary-center-value">
+        —
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="boundary-zoom-shell">
+
+    <div class="boundary-zoom-head">
+
+      <span>
+        Увеличенный участок бифуркационной диаграммы
+      </span>
+
+      <strong id="boundary-range-label">
+        —
+      </strong>
+
+    </div>
+
+
+    <canvas
+      id="window-zoom-chart"
+      aria-label="Увеличенная область найденного периодического окна">
+    </canvas>
+
+  </div>
+
+
+
+  <div class="boundary-research-controls">
+
+
+    <label class="range-control">
+
+      <div class="control-row">
+
+        <span>
+          Исследуемое значение r
+        </span>
+
+        <strong id="boundary-r-value">
+          —
+        </strong>
+
+      </div>
+
+
+      <input
+        id="boundary-r"
+        type="range"
+        min="3.57"
+        max="4"
+        step="0.0001"
+        value="3.83">
+
+    </label>
+
+
+
+    <button
+      class="button primary"
+      id="boundary-check"
+      type="button">
+
+      Проверить состояние
+
+    </button>
+
+
+  </div>
+
+
+
+  <div class="boundary-diagnostics">
+
+
+    <article>
+
+      <span>
+        Текущая точка
+      </span>
+
+      <strong id="boundary-current-mode">
+        —
+      </strong>
+
+      <p id="boundary-current-detail">
+        Выберите значение и проверьте его.
+      </p>
+
+    </article>
+
+
+    <article>
+
+      <span>
+        Левая граница
+      </span>
+
+      <strong id="boundary-left-value">
+        —
+      </strong>
+
+      <button
+        class="boundary-save-button"
+        id="boundary-save-left"
+        type="button">
+
+        Запомнить точку
+
+      </button>
+
+    </article>
+
+
+    <article>
+
+      <span>
+        Правая граница
+      </span>
+
+      <strong id="boundary-right-value">
+        —
+      </strong>
+
+      <button
+        class="boundary-save-button"
+        id="boundary-save-right"
+        type="button">
+
+        Запомнить точку
+
+      </button>
+
+    </article>
+
+
+    <article class="boundary-width-card">
+
+      <span>
+        Ширина найденного окна
+      </span>
+
+      <strong id="boundary-width-value">
+        —
+      </strong>
+
+      <p>
+        Δr = r<sub>прав</sub> − r<sub>лев</sub>
+      </p>
+
+    </article>
+
+
+  </div>
+
+<div
+  class="boundary-feedback"
+  id="boundary-feedback"
+  hidden>
+</div>
+
+<div class="boundary-bottom-actions">
+
+  <button
+    class="button secondary"
+    id="boundary-reset"
+    type="button">
+
+    Сбросить границы
+
+  </button>
+
+  <button
+    class="button secondary"
+    id="boundary-back"
+    type="button">
+
+    Выбрать другой остров
+
+  </button>
+
+</div>
+
+  <div class="boundary-hint">
+
+    <strong>
+      Как искать границу?
+    </strong>
+
+    <p>
+      Найдите место, где при небольшом изменении r
+      периодический режим сменяется хаотическим.
+      Затем сохраните последнюю точку около перехода
+      как левую или правую границу.
+    </p>
+
+  </div>
+
+
+</section>
+
+
+      </div>
+
+
+
+      <!-- ПАНЕЛЬ -->
+
+      <aside class="experiment-controls">
+
+
+        <p class="eyebrow">
+          Исследовательский зонд
+        </p>
+
+
+        <h2>
+          Проверяйте значения r
+        </h2>
+
+
+        <p class="experiment-description">
+          Ориентируйтесь одновременно
+          на диаграмму, знак λ
+          и найденный период.
+        </p>
+
+
+
+        <label class="range-control">
+
+
+          <div class="control-row">
+
+            <span>
+              r
+            </span>
+
+            <strong id="window-r-value">
+              3.700
+            </strong>
+
+          </div>
+
+
+          <input
+            id="window-r"
+            type="range"
+            min="3.57"
+            max="4"
+            step="0.001"
+            value="3.7">
+
+
+          <div class="range-labels">
+
+            <span>
+              3.57
+            </span>
+
+            <span>
+              4.00
+            </span>
+
+          </div>
+
+
+        </label>
+
+
+
+        <button
+          class="button primary full-button"
+          id="window-check"
+          type="button">
+
+          Проверить точку
+
+        </button>
+
+
+
+        <div class="diagnostic-grid">
+
+
+          <article>
+
+            <span>
+              Показатель Ляпунова
+            </span>
+
+            <strong id="window-lambda">
+              —
+            </strong>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              Период
+            </span>
+
+            <strong id="window-period">
+              —
+            </strong>
+
+          </article>
+
+
+        </div>
+
+
+
+        <div class="sequence-card">
+
+
+          <span>
+            Последние состояния системы
+          </span>
+
+
+          <canvas
+            id="window-sequence"
+            aria-label="Последние состояния логистического отображения">
+          </canvas>
+
+
+        </div>
+
+
+
+        <div class="experiment-result window-result">
+
+
+          <span>
+            Результат поиска
+          </span>
+
+
+          <strong id="window-result">
+            Продолжайте исследование
+          </strong>
+
+
+          <p id="window-description">
+            Найдите значение,
+            для которого хаотическое поведение
+            снова становится периодическим.
+          </p>
+
+
+        </div>
+		
+		
+
+
+      </aside>
+
+
+    </div>
+
+
+
+    <section class="experiment-question conclusion-question">
+
+
+      <div>
+
+        <span>
+          Вопрос для вывода
+        </span>
+
+
+        <strong>
+          Можно ли провести одну простую границу
+          между порядком и хаосом?
+        </strong>
+
+      </div>
+
+
+      <button
+        class="button secondary conclusion-toggle"
+        type="button"
+        aria-expanded="false">
+
+        Показать ответ
+
+      </button>
+
+
+      <div
+        class="conclusion-answer"
+        hidden>
+
+        <span>
+          Ответ и пояснение
+        </span>
+
+
+        <p>
+          Не всегда. Внутри областей,
+          где многие значения параметра дают
+          хаотическое поведение,
+          встречаются периодические окна.
+          Поэтому регулярные и хаотические режимы
+          могут чередоваться даже в близких
+          областях параметров.
+        </p>
+
+      </div>
+
+
+    </section>
+
+
+  </section>
+
+
+
+  <!-- =========================================
+       ИТОГОВЫЙ ЖУРНАЛ
+  ========================================== -->
+
+  <section class="research-journal">
+
+
+    <div class="journal-intro">
+
+      <p class="eyebrow">
+        Итог практикума
+      </p>
+
+
+      <h2>
+        Журнал исследователя
+      </h2>
+
+
+      <p>
+        Здесь будут собраны результаты,
+        которые вы получили самостоятельно
+        в трёх экспериментах.
+      </p>
+
+    </div>
+
+
+
+    <div class="journal-grid">
+
+
+      <article>
+
+        <span class="journal-number">
+          01
+        </span>
+
+
+        <strong>
+          Число Фейгенбаума
+        </strong>
+
+
+        <p id="journal-feigenbaum">
+          Измерение ещё не выполнено.
+        </p>
+
+      </article>
+
+
+
+      <article>
+
+        <span class="journal-number">
+          02
+        </span>
+
+
+        <strong>
+          Карта Лоренца
+        </strong>
+
+
+        <p id="journal-lorenz">
+          Режим ещё не исследован.
+        </p>
+
+      </article>
+
+
+
+      <article>
+
+        <span class="journal-number">
+          03
+        </span>
+
+
+        <strong>
+          Остров порядка
+        </strong>
+
+
+        <p id="journal-window">
+          Периодическое окно ещё не найдено.
+        </p>
+
+      </article>
+
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+
+<script src="../js/common.js"></script>
+
+<script src="../js/experiments.js"></script>
+
+<script src="../js/conclusion.js"></script>
+
+
+</body>
+</html>

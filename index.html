@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Интерактивная образовательная лаборатория по теории хаоса">
+  <title>Цифровая лаборатория хаоса</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+  <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">λ</span><span>Лаборатория хаоса</span></a><button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">Меню</button><nav class="nav" aria-label="Основная навигация"><a href="pages/basics.html">Основы</a><a href="pages/logistic.html">Логистика</a><a href="pages/lorenz.html">Лоренц</a><a href="pages/fractal.html">Фракталы</a><a href="pages/applications.html">Применения</a><a href="pages/experiments.html">Эксперименты</a><a href="pages/quiz.html">Испытание</a></nav></header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy"><p class="eyebrow">Интерактивный курс · 14–18 лет</p><h1>Цифровая<br><span>лаборатория хаоса</span></h1><p class="lead">От простых уравнений к сложным системам</p><p class="question">Может ли система подчиняться строгим законам и всё равно быть непредсказуемой?</p><div class="actions"><a class="button primary" href="pages/basics.html">Начать исследование</a><a class="button secondary" href="#route">Посмотреть маршрут</a></div></div>
+      <div class="visual-card"><canvas id="lorenz-canvas" aria-label="Анимированная проекция аттрактора Лоренца"></canvas><div class="visual-label"><span class="status-dot"></span> Аттрактор Лоренца · живая модель</div></div>
+    </section>
+    <section class="intro"><p class="eyebrow">Главная идея</p><h2>Порядок может выглядеть как случайность</h2><p>Хаотическая система развивается по точным правилам, но мельчайшая разница в начале со временем меняет всё. Здесь это можно увидеть, измерить и объяснить.</p></section>
+    <section class="section" id="route"><div class="section-heading"><div><p class="eyebrow">Маршрут</p><h2>Семь шагов исследования</h2></div><span class="progress-label">01 → 07</span></div><div class="card-grid">
+      <a class="topic-card blue" href="pages/basics.html"><span>01 · Теория</span><h3>Основы хаоса</h3><p>Отличите детерминированность от случайности.</p><b>Исследовать →</b></a>
+      <a class="topic-card green" href="pages/logistic.html"><span>02 · Модель</span><h3>Логистическое отображение</h3><p>Найдите переход от порядка к хаосу.</p><b>Запустить →</b></a>
+      <a class="topic-card red" href="pages/lorenz.html"><span>03 · 3D</span><h3>Аттрактор Лоренца</h3><p>Проследите две почти одинаковые траектории.</p><b>Наблюдать →</b></a>
+      <a class="topic-card ochre" href="pages/fractal.html"><span>04 · Масштаб</span><h3>Фракталы</h3><p>Откройте самоподобие множества Мандельброта.</p><b>Приблизить →</b></a>
+      <a class="topic-card cyan" href="pages/applications.html"><span>05 · Практика</span><h3>Применения</h3><p>Погода, биосигналы и криптография.</p><b>Узнать →</b></a>
+      <a class="topic-card violet" href="pages/experiments.html"><span>06 · Практикум</span><h3>Эксперименты</h3><p>Поставьте три опыта и сформулируйте выводы.</p><b>Экспериментировать →</b></a>
+      <a class="topic-card final" href="pages/quiz.html"><span>07 · Проверка</span><h3>Итоговое испытание</h3><p>Проверьте, насколько хорошо вы понимаете хаос.</p><b>Начать →</b></a>
+    </div></section>
+  </main>
+  <footer><span>Цифровая лаборатория хаоса</span><span>Учитесь через наблюдение и эксперимент</span></footer>
+  <script src="js/common.js"></script><script src="js/home.js"></script>
+</body></html>

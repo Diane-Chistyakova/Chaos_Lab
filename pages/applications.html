@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta
+    name="description"
+    content="Интерактивные демонстрации применения идей теории хаоса">
+
+  <title>Применения теории хаоса — Лаборатория</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/applications.css">
+  <link rel="stylesheet" href="../css/conclusion.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">λ</span>
+    <span>Лаборатория хаоса</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    aria-label="Открыть меню"
+    aria-expanded="false">
+    Меню
+  </button>
+
+  <nav class="nav">
+
+    <a href="basics.html">Основы</a>
+    <a href="logistic.html">Логистика</a>
+    <a href="lorenz.html">Лоренц</a>
+    <a href="fractal.html">Фракталы</a>
+
+    <a class="active" href="applications.html">
+      Применения
+    </a>
+
+    <a href="experiments.html">Эксперименты</a>
+    <a href="quiz.html">Испытание</a>
+    <a href="glossary.html">Глоссарий</a>
+    <a href="formulas.html">Формулы</a>
+
+  </nav>
+
+</header>
+
+
+<main class="page-main applications-page">
+
+
+  <!-- HERO -->
+
+  <section class="page-hero">
+
+    <p class="eyebrow">
+      05 · Применения
+    </p>
+
+    <h1>
+      Где теория хаоса встречается с реальностью
+    </h1>
+
+    <p>
+      Исследуйте три области, в которых чувствительность,
+      нелинейность и сложная динамика помогают анализировать
+      реальные процессы.
+    </p>
+
+  </section>
+
+
+
+  <!-- ВЫБОР ОБЛАСТИ -->
+
+  <section class="application-selector">
+
+    <div class="selector-head">
+
+      <div>
+
+        <p class="eyebrow">
+          Выберите направление
+        </p>
+
+        <h2>
+          Три взгляда на сложные системы
+        </h2>
+
+      </div>
+
+      <p>
+        Переключайтесь между примерами и сравнивайте,
+        как одни и те же идеи проявляются в разных областях.
+      </p>
+
+    </div>
+
+
+    <div
+      class="application-tabs"
+      role="tablist"
+      aria-label="Области применения">
+
+
+      <button
+        class="application-tab active"
+        type="button"
+        data-application="weather"
+        role="tab"
+        aria-selected="true">
+
+        <span class="tab-number">01</span>
+
+        <span>
+          <strong>Погода</strong>
+          <small>Предел прогноза</small>
+        </span>
+
+      </button>
+
+
+      <button
+        class="application-tab"
+        type="button"
+        data-application="bio"
+        role="tab"
+        aria-selected="false">
+
+        <span class="tab-number">02</span>
+
+        <span>
+          <strong>Биосигналы</strong>
+          <small>Вариативность ритма</small>
+        </span>
+
+      </button>
+
+
+      <button
+        class="application-tab"
+        type="button"
+        data-application="crypto"
+        role="tab"
+        aria-selected="false">
+
+        <span class="tab-number">03</span>
+
+        <span>
+          <strong>Криптография</strong>
+          <small>Чувствительность к ключу</small>
+        </span>
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================================= -->
+  <!-- ПОГОДА -->
+  <!-- ======================================= -->
+
+  <section
+  class="application-lab active"
+  id="application-weather"
+  data-panel="weather">
+
+  <div class="application-stage weather-stage">
+
+    <div class="stage-head">
+
+      <div>
+        <p class="eyebrow">Атмосферная модель</p>
+        <h2>Движение воздушных масс</h2>
+      </div>
+
+      <div class="weather-legend">
+        <span><i class="temperature-cold"></i> холоднее</span>
+        <span><i class="temperature-warm"></i> теплее</span>
+      </div>
+
+    </div>
+
+    <div class="weather-map-wrap">
+
+      <canvas
+        id="weather-chart"
+        aria-label="Модель движения воздушных масс и температурного поля">
+      </canvas>
+
+      <div class="weather-overlay">
+        <span id="weather-time">t = 0</span>
+      </div>
+
+    </div>
+
+    <div class="stage-footer">
+      <span>
+        Учебная модель: поле температуры и ветровые потоки,
+        а не реальный метеорологический прогноз.
+      </span>
+    </div>
+
+  </div>
+
+
+  <aside class="application-controls">
+
+    <p class="eyebrow">Начальные условия</p>
+
+    <h2>Измените атмосферу</h2>
+
+    <p class="application-description">
+      Даже небольшое изменение температуры или направления ветра
+      может со временем изменить распределение воздушных потоков.
+    </p>
+
+
+    <label class="weather-control">
+      <span>Температурный контраст</span>
+
+      <input
+        id="weather-temperature"
+        type="range"
+        min="20"
+        max="100"
+        step="1"
+        value="65">
+
+      <output id="weather-temperature-value">65%</output>
+    </label>
+
+
+    <label class="weather-control">
+      <span>Сила ветра</span>
+
+      <input
+        id="weather-wind"
+        type="range"
+        min="10"
+        max="100"
+        step="1"
+        value="55">
+
+      <output id="weather-wind-value">55%</output>
+    </label>
+
+
+    <label class="weather-control">
+      <span>Небольшое возмущение</span>
+
+      <input
+        id="weather-perturbation"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        value="4">
+
+      <output id="weather-perturbation-value">4%</output>
+    </label>
+
+
+    <div class="application-actions">
+
+      <button
+        class="button primary"
+        id="weather-run">
+        Запустить
+      </button>
+
+      <button
+        class="button secondary"
+        id="weather-pause">
+        Пауза
+      </button>
+
+      <button
+        class="button secondary"
+        id="weather-reset">
+        Сбросить
+      </button>
+
+    </div>
+
+
+    <div class="application-result">
+
+      <span>Что наблюдать</span>
+
+      <strong>
+        Как меняется поле
+      </strong>
+
+      <p>
+        Следите за тем, как температурные зоны и направление движения
+        частиц постепенно перестраиваются.
+      </p>
+
+    </div>
+
+  </aside>
+
+</section>
+
+
+
+  <!-- ======================================= -->
+  <!-- БИОСИГНАЛЫ -->
+  <!-- ======================================= -->
+
+  <section
+    class="application-lab"
+    id="application-bio"
+    data-panel="bio"
+    hidden>
+
+
+    <div class="application-stage">
+
+      <div class="stage-head">
+
+        <div>
+
+          <p class="eyebrow">
+            Модельные биосигналы
+          </p>
+
+          <h2>
+            Ритм живой системы
+          </h2>
+
+        </div>
+
+
+        <span class="stage-note">
+          Учебная демонстрация
+        </span>
+
+      </div>
+
+
+      <canvas
+        id="bio-chart"
+        aria-label="Сравнение регулярного и вариативного модельных ритмов">
+      </canvas>
+
+
+      <div class="stage-footer">
+
+        <span>
+          Это не медицинская диагностика,
+          а математическая демонстрация вариативности.
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <aside class="application-controls">
+
+      <p class="eyebrow">
+        Сравнение сигналов
+      </p>
+
+      <h2>
+        Регулярность или вариативность?
+      </h2>
+
+
+      <p class="application-description">
+
+        Живой сигнал не обязан повторяться идеально.
+
+        Здесь можно сравнить почти регулярный модельный ритм
+        с более сложным и изменчивым сигналом.
+
+      </p>
+
+
+      <div class="bio-mode-buttons">
+
+        <button
+          class="signal-mode active"
+          type="button"
+          data-mode="regular">
+
+          Регулярный ритм
+
+        </button>
+
+        <button
+          class="signal-mode"
+          type="button"
+          data-mode="variable">
+
+          Вариативный ритм
+
+        </button>
+
+      </div>
+
+
+      <div class="application-result">
+
+        <span>
+          Что наблюдать
+        </span>
+
+        <strong id="bio-state">
+          Почти регулярный сигнал
+        </strong>
+
+        <p id="bio-description">
+
+          Интервалы между пиками изменяются очень мало.
+
+        </p>
+
+      </div>
+
+    </aside>
+
+  </section>
+
+
+
+  <!-- ======================================= -->
+  <!-- КРИПТОГРАФИЯ -->
+  <!-- ======================================= -->
+
+  <section
+  class="application-lab"
+  id="application-crypto"
+  data-panel="crypto"
+  hidden>
+
+  <div class="application-stage crypto-stage">
+
+    <div class="stage-head">
+
+      <div>
+        <p class="eyebrow">Генератор паролей</p>
+        <h2>Малое изменение ключа — другой пароль</h2>
+      </div>
+
+      <span class="stage-note">
+        Пошаговый эксперимент
+      </span>
+
+    </div>
+
+
+    <div class="crypto-steps" id="crypto-steps">
+      <div class="crypto-step active" id="crypto-step-1">
+        <span>1</span>
+        <strong>Создайте пароль A</strong>
+      </div>
+
+      <div class="crypto-step" id="crypto-step-2">
+        <span>2</span>
+        <strong>Измените ключ на +0.000001</strong>
+      </div>
+
+      <div class="crypto-step" id="crypto-step-3">
+        <span>3</span>
+        <strong>Создайте пароль B</strong>
+      </div>
+
+      <div class="crypto-step" id="crypto-step-4">
+        <span>4</span>
+        <strong>Сравните результаты</strong>
+      </div>
+    </div>
+
+
+    <div class="password-lab">
+
+      <div class="password-output-card">
+        <span>Пароль A</span>
+        <small id="crypto-key-a">Ключ A: —</small>
+
+        <div class="password-reel" id="password-a"></div>
+
+        <button
+          class="password-copy"
+          id="copy-password-a"
+          type="button">
+          Копировать
+        </button>
+      </div>
+
+
+      <div class="password-output-card">
+        <span>Пароль B</span>
+        <small id="crypto-key-b">Ключ B: —</small>
+
+        <div class="password-reel" id="password-b"></div>
+
+        <button
+          class="password-copy"
+          id="copy-password-b"
+          type="button">
+          Копировать
+        </button>
+      </div>
+
+
+      <div class="password-difference">
+        <span>Различие паролей</span>
+
+        <div class="difference-bar">
+          <i id="password-difference-bar"></i>
+        </div>
+
+        <strong id="password-difference-value">
+          Сначала выполните эксперимент
+        </strong>
+      </div>
+
+
+      <div class="password-strength-grid">
+
+        <article>
+          <span>Длина</span>
+          <strong id="password-length">—</strong>
+        </article>
+
+        <article>
+          <span>Набор символов</span>
+          <strong id="password-alphabet">—</strong>
+        </article>
+
+        <article>
+          <span>Оценка энтропии</span>
+          <strong id="password-entropy">—</strong>
+        </article>
+
+        <article>
+          <span>Условная стойкость</span>
+          <strong id="password-strength">—</strong>
+        </article>
+
+      </div>
+
+    </div>
+
+
+    <div class="stage-footer">
+      <span>
+        Идея эксперимента: очень маленькое изменение исходного ключа
+        приводит к другому результату генерации.
+      </span>
+    </div>
+
+  </div>
+
+
+  <aside class="application-controls">
+
+    <p class="eyebrow">Параметры генератора</p>
+
+    <h2>Пошаговая генерация</h2>
+
+    <p class="application-description">
+      Сначала создайте пароль A. Затем измените условный ключ всего на
+      <strong>0.000001</strong> и создайте пароль B. После этого сравните,
+      насколько сильно отличается результат.
+    </p>
+
+
+    <label class="crypto-key-control">
+      <span>Условный ключ</span>
+
+      <input
+        id="crypto-key"
+        type="number"
+        value="0.200000"
+        min="0.000001"
+        max="0.999999"
+        step="0.000001">
+    </label>
+
+
+    <label class="password-length-control">
+      <span>Длина пароля</span>
+
+      <input
+        id="password-length-control"
+        type="range"
+        min="8"
+        max="32"
+        step="1"
+        value="16">
+
+      <output id="password-length-value">16</output>
+    </label>
+
+
+    <fieldset class="password-options">
+      <legend>Использовать</legend>
+
+      <label>
+        <input id="use-uppercase" type="checkbox" checked>
+        Заглавные буквы
+      </label>
+
+      <label>
+        <input id="use-lowercase" type="checkbox" checked>
+        Строчные буквы
+      </label>
+
+      <label>
+        <input id="use-numbers" type="checkbox" checked>
+        Цифры
+      </label>
+
+      <label>
+        <input id="use-symbols" type="checkbox" checked>
+        Спецсимволы
+      </label>
+    </fieldset>
+
+
+    <div class="crypto-workflow-actions">
+
+      <button
+        class="button primary"
+        id="crypto-generate-a">
+        Сгенерировать пароль A
+      </button>
+
+      <button
+        class="button secondary"
+        id="crypto-nudge-key">
+        + 0.000001 к ключу
+      </button>
+
+      <button
+        class="button secondary"
+        id="crypto-generate-b">
+        Сгенерировать пароль B
+      </button>
+
+      <button
+        class="button secondary"
+        id="crypto-reset">
+        Сбросить
+      </button>
+
+    </div>
+
+
+    <div class="application-result">
+      <span>Состояние эксперимента</span>
+      <strong id="crypto-status">Сначала создайте пароль A</strong>
+      <p id="crypto-status-text">
+        После генерации A можно будет изменить ключ и получить пароль B.
+      </p>
+    </div>
+
+  </aside>
+
+</section>
+
+
+
+  <!-- ТРИ ОБЪЯСНЯЮЩИЕ КАРТОЧКИ -->
+
+  <section class="content-row application-cards">
+
+
+    <article class="content-card">
+
+      <span class="card-number">
+        01
+      </span>
+
+      <h3>
+        Что объединяет примеры?
+      </h3>
+
+      <p>
+
+        Во всех трёх случаях мы рассматриваем сложные системы
+        или последовательности, поведение которых зависит
+        от исходных данных и правил изменения.
+
+      </p>
+
+      <p class="card-prompt">
+
+        Ищите не внешнее сходство,
+        а общую математическую идею.
+
+      </p>
+
+    </article>
+
+
+
+    <article class="content-card">
+
+      <span class="card-number">
+        02
+      </span>
+
+      <h3>
+        Где проявляется нелинейность?
+      </h3>
+
+      <p>
+
+        Малое изменение входных данных не всегда приводит
+        к столь же малому изменению будущего состояния.
+
+      </p>
+
+      <p class="card-prompt">
+
+        Именно поэтому долгосрочное поведение
+        сложных систем трудно предсказывать.
+
+      </p>
+
+    </article>
+
+
+
+    <article class="content-card">
+
+      <span class="card-number">
+        03
+      </span>
+
+      <h3>
+        Что важно не перепутать?
+      </h3>
+
+      <p>
+
+        Сложность или непредсказуемость не означают,
+        что система работает без правил.
+
+        Хаотические модели могут быть полностью
+        детерминированными.
+
+      </p>
+
+      <p class="card-prompt">
+
+        Хаос — не синоним случайности.
+
+      </p>
+
+    </article>
+
+
+  </section>
+
+
+
+  <!-- СРАВНЕНИЕ -->
+
+  <section class="application-summary">
+
+    <div>
+
+      <p class="eyebrow">
+        Сравнение
+      </p>
+
+      <h2>
+        Одна идея — разные задачи
+      </h2>
+
+      <p>
+
+        Теория хаоса не даёт единого «рецепта»
+        для всех сложных систем.
+
+        Она предлагает способы исследовать
+        чувствительность, нелинейность
+        и пределы предсказуемости.
+
+      </p>
+
+    </div>
+
+
+    <div class="application-summary-grid">
+
+
+      <article>
+
+        <span>
+          Погода
+        </span>
+
+        <strong>
+          Ограниченный горизонт прогноза
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          Биосигналы
+        </span>
+
+        <strong>
+          Анализ сложной вариативности
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          Криптография
+        </span>
+
+        <strong>
+          Чувствительные последовательности
+        </strong>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- МИНИ-ЗАДАНИЕ -->
+
+  <section class="try-it applications-task">
+
+
+    <div>
+
+      <p class="mini-task-label">
+        Мини-задание
+      </p>
+
+      <h2>
+        Найдите общую идею
+      </h2>
+
+      <p>
+
+        Проведите три демонстрации
+        и сравните полученные результаты.
+
+      </p>
+
+    </div>
+
+
+
+    <div class="task-steps">
+
+      <span>1</span>
+
+      <p>
+        В погодной модели измените точность начальных данных.
+      </p>
+
+
+      <span>2</span>
+
+      <p>
+        Сравните регулярный и вариативный биосигнал.
+      </p>
+
+
+      <span>3</span>
+
+      <p>
+        Измените условный ключ криптографической демонстрации.
+      </p>
+
+    </div>
+
+
+
+    <div class="task-question conclusion-question">
+
+
+      <div>
+
+        <span>
+          Вопрос для вывода
+        </span>
+
+        <strong>
+
+          Почему чувствительность к небольшим изменениям
+          важна сразу в нескольких совершенно разных областях?
+
+        </strong>
+
+      </div>
+
+
+      <button
+        class="button secondary conclusion-toggle"
+        type="button"
+        aria-expanded="false">
+
+        Показать ответ
+
+      </button>
+
+
+      <div
+        class="conclusion-answer"
+        hidden>
+
+        <span>
+          Ответ и пояснение
+        </span>
+
+        <p>
+
+          Потому что многие сложные процессы зависят
+          не только от правил системы,
+          но и от её текущего состояния.
+
+          Если система чувствительна к начальным условиям,
+          даже небольшое изменение исходных данных
+          может со временем заметно изменить результат.
+
+          Поэтому при исследовании таких систем важно учитывать
+          точность измерений, пределы прогноза
+          и устойчивость получаемых результатов.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script src="../js/common.js"></script>
+<script src="../js/applications.js"></script>
+<script src="../js/conclusion.js"></script>
+<script src="../js/term-links.js"></script>
+
+</body>
+</html>

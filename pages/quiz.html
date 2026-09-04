@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Итоговое интерактивное испытание по теории хаоса">
+  <title>Итоговое испытание — Лаборатория хаоса</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">λ</span><span>Лаборатория хаоса</span></a>
+    <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">Меню</button>
+    <nav class="nav"><a href="basics.html">Основы</a><a href="logistic.html">Логистика</a><a href="lorenz.html">Лоренц</a><a href="fractal.html">Фракталы</a><a href="applications.html">Применения</a><a href="experiments.html">Эксперименты</a><a href="quiz.html">Испытание</a></nav>
+  </header>
+  <main class="page-main quiz-page">
+    <section class="page-hero"><p class="eyebrow">07 · Итоговое испытание</p><h1>Что вы узнали о хаосе?</h1><p>Восемь заданий помогут проверить не только знание терминов, но и умение объяснять результаты экспериментов всей лаборатории.</p></section>
+    <section class="quiz-layout" id="quiz-area" aria-label="Итоговое испытание">
+      <article class="content-card quiz-card" id="quiz-card" aria-labelledby="question-title">
+        <div class="quiz-question-head"><div><p class="eyebrow" id="question-counter">Вопрос 1 из 8</p><span class="quiz-topic" id="question-topic">Основы хаоса</span></div><span class="quiz-format" id="question-format">Один ответ</span></div>
+        <div id="question-visual"></div><h2 id="question-title">Загрузка задания…</h2><p class="quiz-prompt" id="question-prompt"></p>
+        <form id="answer-form" novalidate><div class="quiz-answers" id="quiz-answers"></div><p class="quiz-selection-hint" id="selection-hint" role="alert" hidden>Сначала выберите ответ.</p><div class="quiz-feedback" id="quiz-feedback" aria-live="polite" hidden></div><div class="actions quiz-actions"><button class="button secondary" id="previous-question" type="button" hidden>Предыдущий вопрос</button><button class="button primary" id="check-answer" type="submit" disabled>Проверить ответ</button><button class="button secondary" id="next-question" type="button" hidden>Следующий вопрос</button></div></form>
+      </article>
+      <aside class="control-panel quiz-status" aria-label="Прогресс испытания"><p class="eyebrow">Ваш маршрут</p><h2>Прогресс</h2><div class="quiz-status-row"><span>Текущий вопрос</span><strong id="status-question">1 / 8</strong></div><div class="quiz-progress" role="progressbar" aria-label="Выполнено заданий" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="progress-fill"></span></div><p class="quiz-progress-copy" id="progress-copy">Проверено 0 из 8 заданий</p><div class="quiz-score-card"><span>Правильных ответов</span><strong id="live-score">0</strong></div><div class="quiz-route" id="quiz-route" aria-label="Этапы испытания"></div><p class="quiz-status-note">После проверки ответ фиксируется. Если возникнет ошибка, появится ссылка на нужную лабораторию.</p><button class="button secondary quiz-reset" id="reset-quiz" type="button">Начать сначала</button></aside>
+    </section>
+    <section class="quiz-result" id="quiz-result" aria-labelledby="result-title" hidden>
+      <div class="result-summary"><p class="eyebrow">Испытание завершено</p><h2 id="result-title">Ваш результат</h2><div class="result-score"><strong id="result-score">0 / 8</strong><span id="result-percent">0%</span></div><h3 id="result-grade"></h3><p id="result-message"></p><button class="button primary" id="restart-quiz" type="button">Пройти испытание снова</button></div>
+      <div class="result-review"><p class="eyebrow">Маршрут повторения</p><h3 id="review-title">Темы для повторения</h3><div class="review-list" id="review-list"></div></div>
+      <div class="result-professor" id="result-professor"><img class="assistant-avatar result-professor-avatar" id="result-professor-avatar" src="../assets/characters/lambda.png" alt="Профессор Лямбда"><div class="assistant-bubble result-professor-bubble"><strong class="assistant-name" id="result-professor-name">Профессор Лямбда · λ</strong><p class="assistant-message" id="result-professor-message"></p></div></div>
+    </section>
+  </main>
+  <script src="../js/common.js"></script><script src="../js/quiz.js"></script>
+</body>
+</html>
